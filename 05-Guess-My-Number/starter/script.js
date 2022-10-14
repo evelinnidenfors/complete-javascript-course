@@ -29,15 +29,13 @@ CHECK_BTN.addEventListener('click', () => {
       highScoreSelector.textContent = highScore;
     }
     // Incorrect guesses, either too low or high and deducting points for each
-  } else if (GUESS < secretNumber && score > 1) {
-    MESSAGE.textContent = 'Incorrect number, too low 🫣';
+  } else if (GUESS !== secretNumber && score > 1) {
+    MESSAGE.textContent =
+      GUESS > secretNumber
+        ? 'Incorrect number, too high 🫣'
+        : 'Incorrect number, too low 🫣';
     score--;
     currentScore.textContent = score;
-  } else if (GUESS > secretNumber && score > 1) {
-    MESSAGE.textContent = 'Incorrect number, too high 🫣';
-    score--;
-    currentScore.textContent = score;
-    // If too many incorrect guesses, you lose the game
   } else {
     MESSAGE.textContent = 'You lost 😢';
     currentScore.textContent = 0;
